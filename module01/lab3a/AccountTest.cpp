@@ -5,16 +5,25 @@
 
 using namespace std;
 
+void displayAccount(Account accountToDisplay) {
+
+    cout << accountToDisplay.getName() << " balance is $"
+        << accountToDisplay.getBalance();
+
+}
+
 int main() 
 {
+    cout << "Wesley Chou\n\n";
+
     Account account1 = Account("Jane Green", 50);
     Account account2 = Account("John Blue", -7); 
 
     // display initial balance of each object
-    cout << "account1: " << account1.getName() << " balance is $"
-        << account1.getBalance(); 
-    cout << "\naccount2: " << account2.getName() << " balance is $"
-        << account2.getBalance(); 
+    cout << "account1: ";
+    displayAccount(account1);
+    cout << "\naccount2: ";
+    displayAccount(account2); 
 
     cout << "\n\nEnter deposit amount for account1: "; // prompt
     int depositAmount;
@@ -23,10 +32,10 @@ int main()
     account1.deposit(depositAmount); // add to account1's balance
 
     // display balances
-    cout << "\n\naccount1: " << account1.getName() << " balance is $"
-        << account1.getBalance(); 
-    cout << "\naccount2: " << account2.getName() << " balance is $"
-        << account2.getBalance(); 
+    cout << "\n\naccount1: "; 
+    displayAccount(account1);
+    cout << "\naccount2: ";
+    displayAccount(account2); 
 
     cout << "\n\nEnter deposit amount for account2: "; // prompt
     cin >> depositAmount; // obtain user input
@@ -44,14 +53,15 @@ int main()
     cout << "\nEnter withdraw amount for acocunt1: ";
     cin >> withdrawAmount;
     cout << account1.withdraw(withdrawAmount) << endl;
-    cout << "account1: " << account1.getName() << " balance is $" 
-        << account1.getBalance() << endl;
     
     withdrawAmount = 0;
 
     cout << "\nEnter withdraw amount for acocunt2: ";
     cin >> withdrawAmount;
     cout << account2.withdraw(withdrawAmount) << endl;
-    cout << "account2: " << account2.getName() << " balance is $" 
-        << account2.getBalance() << endl;
+    
+    cout << "\naccount1: "; 
+    displayAccount(account1);
+    cout << "\naccount2: ";
+    displayAccount(account2); 
 }
