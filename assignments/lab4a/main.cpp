@@ -7,51 +7,47 @@ int main(){
     cout << "Enter a 5-digit integer that contain only 0s and 1s: ";
     cin >> input;
 
-    int check_input = input;
-    int digit_count = 0;
+
+    int min = 10000;
+    int max = 11111;
+
+    int current = input;
     int digit;
 
-    // check input
-    while (check_input){
+    // boolean variable to check if input are 0's and 1's
+    bool valid = true;
 
-        digit = check_input % 10;
-        check_input /= 10;
-        digit_count++;
-
+    // check if input are all 0's and 1's
+    while (current){
+        digit = current % 10;
         if (digit != 0 && digit != 1){
-            cout << "Error: Invalid input.\n" << endl;
-            // prompt new input
-            cout << "Enter a 5-digit integer that contain only 0s and 1s: ";
-            cin >> input;
-
-            // reset values
-            check_input = input;
-            digit_count = 0;
-            digit = 0;
+            valid = false;
         }
+        current /= 10;
+    }
 
-        // check if input has length 5
-        while (digit_count != 5){
+    // check input
+    while ( !(min <= input && input <= max) || !(valid) ){  //min <= input <= max;
 
-            cout << "Error: Invalid input.\n" << endl;
-            // prompt new input
-            cout << "Enter a 5-digit integer that contain only 0s and 1s: ";
-            cin >> input;
+        cout << "Error: Invalid input.\n\n";
+        cout << "Enter a 5-digit integer that contain only 0s and 1s: ";
+        cin >> input;
 
-            digit_count = 0;
-            check_input = input;
+        valid = true;
 
-            while (check_input){
-                check_input /= 10;
-                digit_count++ ;
+        // check if input are all 0's and 1's
+        current = input;
+        while (current){
+            digit = current % 10;
+            if (digit != 0 && digit != 1){
+                valid = false;
             }
+            current /= 10;
         }
-
     }
 
 
-    // reset and initialize values
-    check_input = input;
+    current = input;
     digit = 0;
     int i = 0;
     int decimal = 0;
@@ -60,8 +56,8 @@ int main(){
     while (i < 5){
 
         // get right-most digit
-        digit = check_input % 10;
-        check_input /= 10;
+        digit = current % 10;
+        current /= 10;
         
         // get the 2^exponent value ; e.g., 2^3 = 8
         int j = 0;
@@ -78,6 +74,5 @@ int main(){
 
     
     cout << "The decimal value is: " << decimal << endl;
-
     return 0;
 }
