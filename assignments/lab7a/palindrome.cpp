@@ -22,7 +22,14 @@ int main() {
 }
 
 bool testPalindrome(string palindrome, size_t left, size_t right) {
-  //
-  // TO DO
-  //
+
+   if (left == right){
+      return true;
+   }
+   if (palindrome[left] != palindrome[right]){
+      return false;
+   }
+   
+   return testPalindrome(palindrome, left + 1, right - 1);
+   
 }
