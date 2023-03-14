@@ -76,7 +76,30 @@ string Time::toStandardString() const {
 
 // increment one second
 void Time::tick() {
-  //
-  // TO DO
-  //
-  }
+
+   second += 1;
+
+   if (second == 60){
+      Time::setSecond(0);
+      minute += 1;
+   }
+   else{
+      Time::setSecond(second);
+   }
+
+   if (minute == 60){
+      Time::setMinute(0);
+      hour += 1;
+   }
+   else{
+      Time::setMinute(minute);
+   }
+
+   if (hour == 24){
+      Time::setHour(0);
+   }
+   else{
+      Time::setHour(hour);
+   }
+
+}

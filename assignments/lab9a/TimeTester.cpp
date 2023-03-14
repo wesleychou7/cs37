@@ -5,15 +5,13 @@ using namespace std;
 const int MAX_TICKS{30}; //
 
 int main() {
-   Time t{23, 59, 57}; // instantiate object t of class Time
+  Time t{23, 59, 57}; // instantiate object t of class Time
 
-   // output Time object t's values
-   for (int ticks{1}; ticks < MAX_TICKS; ++ticks) {
+  // output Time object t's values
+  for (int ticks{1}; ticks < MAX_TICKS; ++ticks) {
 
-     //
-     // TO DO - MAX_TICKS can be changed to create a 
-     //         longer loop
-     //
-     
-   } 
+    t.tick();
+    cout << t.toStandardString() << endl;
+    
+  } 
 }
