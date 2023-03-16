@@ -21,7 +21,7 @@ void NewTime::setTime(int h, int m, int s) {
 // set hour value
 void NewTime::setHour(int h) {
    if (h >= 0 && h < 24) {
-      hour = h;
+      seconds += h * 3600;
    }
    else {
       throw invalid_argument("hour must be 0-23");
@@ -31,7 +31,7 @@ void NewTime::setHour(int h) {
 // set minute value
 void NewTime::setMinute(int m) {
    if (m >= 0 && m < 60) {
-      minute = m;
+      seconds += m * 60;
    }
    else {
       throw invalid_argument("minute must be 0-59");
@@ -41,7 +41,7 @@ void NewTime::setMinute(int m) {
 // set second value
 void NewTime::setSecond(int s) {
    if (s >= 0 && s < 60) {
-      second = s;
+      seconds += s;
    }
    else {
       throw invalid_argument("second must be 0-59");
@@ -49,13 +49,21 @@ void NewTime::setSecond(int s) {
 }
 
 // return hour value
-unsigned int NewTime::getHour() const { return hour; }
+unsigned int NewTime::getHour() const { return seconds / 3600; }
 
 // return minute value
-unsigned NewTime::getMinute() const { return minute; }
+unsigned NewTime::getMinute() const { 
+   int s = seconds;
+   s -= getHour()*3600;
+   return s / 60; 
+}
 
 // return second value
-unsigned NewTime::getSecond() const { return second; }
+unsigned NewTime::getSecond() const { 
+   int s = seconds;
+   s -= getHour()*3600 + getMinute()*60;
+   return s;
+}
 
 // return NewTime as a string in universal-time format (HH:MM:SS)
 string NewTime::toUniversalString() const {
@@ -70,6 +78,6 @@ string NewTime::toStandardString() const {
    ostringstream output;
    output << ((getHour() == 0 || getHour() == 12) ? 12 : getHour() % 12)
       << ":" << setfill('0') << setw(2) << getMinute() << ":" << setw(2)
-      << getSecond() << (hour < 12 ? " AM" : " PM");
+      << getSecond() << (getHour() < 12 ? " AM" : " PM");
    return output.str();
 }
