@@ -18,12 +18,13 @@ public:
    // get the card's face
    Face getFace() const {
       return face;
-   } 
+   }
 
    // get the card's suit
    Suit getSuit() const {
       return suit;
-   } 
+   }
+
 private:
    Face face;
    Suit suit;
