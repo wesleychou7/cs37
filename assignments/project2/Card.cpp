@@ -1,17 +1,18 @@
-#include "Card.h"
 #include <string>
-#include <iostream>
+#include "Card.h"
+
 using namespace std;
 
 Card::Card(Face cardFace, Suit cardSuit){
-    
-    Card::Face face = cardFace;
-    Card::Suit suit = cardSuit;
-
+    face = cardFace;
+    suit = cardSuit;
 }
 
-// create list
+const string Card::faceNames[FACES] = {"Ace", "Deuce", "Three", "Four", "Five", "Six", "Seven", "Eight", 
+        "Nine", "Ten", "Jack", "Queen", "King"};
+const string Card::suitNames[SUITS] = {"Hearts", "Diamonds", "Clubs", "Spades"};
 
 string Card::toString() const{
-    return Card::face;
+    
+    return faceNames[static_cast<int>(face)] + " of " + suitNames[static_cast<int>(suit)];
 }
