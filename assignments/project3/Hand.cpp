@@ -1,5 +1,6 @@
 // Stores and calculates attributes of a hand of cards.
 #include <iostream>
+#include <vector>
 #include "Hand.h"
 using namespace std;
 
@@ -18,49 +19,90 @@ Hand::Hand(DeckOfCards &deck) : faceCount(Card::FACES) {
 
 // display contents of hand to standard output stream
 void Hand::print() const {
-  //
-  // TO DO
-  //
+  for (int i{0}; i<5; i++){
+    cout << hand[i].toString() << endl;
+  }
+  cout << endl;
 } 
 
 // determine if hand contains a pair
 bool Hand::pair() const {
-  //
-  // TO DO
-  //
+  for (int i{0}; i<faceCount.size(); i++){
+    if (faceCount[i] == 2){
+      return true;
+    }
+  }
+  return false;
 } 
 
 // determine if hand contains two pairs
 bool Hand::twoPair() const {
-  //
-  // TO DO
-  //
+  int count = 0;
+
+  for (int i{0}; i<faceCount.size(); i++){
+    if (faceCount[i] == 2){
+      count++;
+    }
+    if (count == 2){
+      return true;
+    }
+  }
+  return false;
 } 
 
 // determine if hand contains three of a kind
 bool Hand::threeOfAKind() const {
-  //
-  // TO DO
-  //
+  for (int i{0}; i<faceCount.size(); i++){
+    if (faceCount[i] == 3){
+      return true;
+    }
+  }
+  return false;
 } 
 
 // determine if hand contains four of a kind
 bool Hand::fourOfAKind() const {
-  //
-  // TO DO
-  //
+  for (int i{0}; i<faceCount.size(); i++){
+    if (faceCount[i] == 4){
+      return true;
+    }
+  }
+  return false;
 } 
 
 // determine if hand contains a flush
 bool Hand::flush() const { 
-  //
-  // TO DO
-  //
+
+  Card::Suit temp{hand[0].getSuit()};
+
+  for (int i{1}; i<hand.size(); i++){
+    if (hand[i].getSuit() != temp){
+      return false;
+    }
+  }
+  return true;
 } 
 
 // determine if hand contains a straight
 bool Hand::straight() const {
-  //
-  // TO DO
-  //
+
+  int count{0};
+  int start{0};
+
+  for (int i{0}; i<=faceCount.size(); i++){
+    if (faceCount[i]==1){
+      start = i;
+      break;
+    }
+    if (i > faceCount.size()-4){
+      return false;
+    }
+  }
+
+  for (int j{start}; j<start+5; j++){
+    if (faceCount[j]!=1){
+      return false;
+    }
+  }
+  return true;
 } 
