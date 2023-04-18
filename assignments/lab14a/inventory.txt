@@ -1,0 +1,4 @@
+500 "Green taco" 99
+56 "iPhone 13" 23
+43 "ikea chair" 122
+125 "blue dog" 78
