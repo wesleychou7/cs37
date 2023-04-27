@@ -1,0 +1,39 @@
+Step 5 - Answer the following questions:
+
+1. Does the code work?
+The code does not work
+
+2. What data structure is used for a card?  for a deck of cards?
+For card, it used a struct. For a deck of cards, it uses vectors
+
+3. Does it simulate a two player game of poker completely?
+No, the code does not run.
+
+4. If not, what is missing...ChatGPT might have even told you what is missing.
+ChatGPT is missing a definition for its random_shuffle function.
+
+
+Step 7 - Answer the following questions:
+
+1. Was the code written the second time different from the first?
+Yes.
+
+2. What data structure is used for a card?  for a deck of cards?
+For a card, it used a struct. For deck of cards, it used vectors.
+
+3. Did the second program accurately simulate a two player game of poker?
+No.
+
+4. What, if anything, is missing from this program?
+It is missing a lot of definitions for functions. ChatGPT repeatedly calls functions that don't exist.
+
+
+If you are not able to get a complete, working program, submit the best result and 
+explain the data types and functions it uses and what it is missing, as well as the prompt you used.
+
+The code mostly uses vectors that stores elements of type Card. It has functions to create a deck
+of cards, shuffle the deck, deal the cards, and evaluate the players' hands. It is missing several
+definitions to the functions used in the main function. I tried to make ChatGPT write these missing
+definitions by saying "for this line of code: _____, I am getting this error:____". I basically
+repeated this line for every line thats giving me errors. However, ChatGPT's answers only created 
+more errors.
