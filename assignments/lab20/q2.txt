@@ -1,0 +1,3 @@
+The code is O(n^2) because there is a nested for loop. The outer for loop 
+iterates through the entire array, and the inner for loop also iterates through 
+the entire array. So the number of iterations is n * n or n^2.
